@@ -7,7 +7,7 @@ export const education: EducationItem[] = [
     level: '4th Year',
     expectedGraduation: '2027',
     details: [
-      'Focused on software development, systems analysis, databases, and practical computing projects.',
+      'Focused on software development, algorithms, systems analysis, databases, and practical computing projects.',
       'Developing full-stack skills through academic work, personal projects, and thesis preparation.',
     ],
   },

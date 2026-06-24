@@ -10,6 +10,9 @@ export function FeaturedProject() {
     return null;
   }
 
+  const featuredImagePath = project.caseStudy.imagePath ?? project.imagePath;
+  const featuredImageAlt = project.caseStudy.imageAlt ?? project.imageAlt ?? project.title;
+
   return (
     <section id="featured-project" className="section-shell">
       <SectionHeading
@@ -20,8 +23,8 @@ export function FeaturedProject() {
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="glass-card overflow-hidden" data-reveal>
-          {project.imagePath ? (
-            <img src={assetPath(project.imagePath)} alt={project.imageAlt ?? project.title} className="h-full min-h-80 w-full object-cover" />
+          {featuredImagePath ? (
+            <img src={assetPath(featuredImagePath)} alt={featuredImageAlt} className="h-full min-h-80 w-full bg-white/60 object-contain p-8" />
           ) : (
             <div className="grid min-h-80 place-items-center bg-slate-100 text-slate-600">Screenshot can be added later</div>
           )}

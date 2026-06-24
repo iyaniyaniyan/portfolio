@@ -47,6 +47,8 @@ export interface ProjectCaseStudy {
   role: string[];
   keyFeatures: string[];
   screenshotNote: string;
+  imagePath?: string;
+  imageAlt?: string;
 }
 
 export interface Project {

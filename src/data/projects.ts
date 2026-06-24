@@ -17,12 +17,14 @@ export const projects: Project[] = [
       'Allowance disbursement tracking',
     ],
     status: 'Undergraduate thesis project / implementation preparation',
-    imagePath: '/assets/kabscholar-dashboard.png',
-    imageAlt: 'KABScholar scholarship management dashboard mockup',
+    imagePath: '/assets/dashboard_admin_kabscholar.png',
+    imageAlt: 'KABScholar admin dashboard interface',
     featured: true,
     caseStudy: {
       fullTitle:
         'KABScholar: An Online-Based Scholarship Management System Using K-Means Clustering Algorithm for the Office of Student Affairs and Services of Cavite State University - Carmona',
+      imagePath: '/assets/kabscholar_icon.png',
+      imageAlt: 'KABScholar project icon',
       problem:
         'Scholarship management can become slow, fragmented, and error-prone when handled manually. Administrators need a centralized system to manage records, track application progress, monitor disbursements, and generate reliable reports.',
       solution:
@@ -46,7 +48,7 @@ export const projects: Project[] = [
         'Contributed to system planning, design, development, documentation, and implementation preparation.',
         'Role is described carefully to avoid overstating individual ownership where exact responsibilities may evolve.',
       ],
-      screenshotNote: 'Screenshots can be added later by editing the KABScholar entry in src/data/projects.ts.',
+      screenshotNote: 'KABScholar dashboard and icon assets are included in public/assets.',
     },
   },
   {
@@ -68,17 +70,6 @@ export const projects: Project[] = [
       'This card is intentionally marked as a placeholder. Replace the title, description, tech stack, links, screenshot path, and features in src/data/projects.ts when a new project is ready to showcase.',
     techStack: ['To be updated'],
     features: ['Add project features here', 'Add repository or demo links when available'],
-    status: 'Placeholder - details to be added',
-    featured: false,
-    editableNote: 'Replace this placeholder in src/data/projects.ts.',
-  },
-  {
-    title: 'Academic / Personal Project Placeholder',
-    shortDescription: 'Editable space for an academic, thesis-related, or personal software project.',
-    longDescription:
-      'Use this placeholder for a class project, prototype, research output, or personal build. Keep the content specific and honest once project details are available.',
-    techStack: ['To be updated'],
-    features: ['Summarize the problem solved', 'List real features only after implementation'],
     status: 'Placeholder - details to be added',
     featured: false,
     editableNote: 'Replace this placeholder in src/data/projects.ts.',

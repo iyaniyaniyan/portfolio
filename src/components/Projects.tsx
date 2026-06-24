@@ -8,10 +8,10 @@ export function Projects() {
       <SectionHeading
         eyebrow="Projects"
         title="Project work with honest status labels and room to grow."
-        description="KABScholar is featured as the main project, while the remaining cards are ready for future academic and personal work."
+        description="KABScholar is featured as the main project, with the remaining cards reserved for active and future work."
       />
 
-      <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}
