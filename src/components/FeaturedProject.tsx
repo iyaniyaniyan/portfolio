@@ -22,9 +22,9 @@ export function FeaturedProject() {
       />
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="glass-card overflow-hidden" data-reveal>
+        <div className="flex min-h-80 items-center justify-center" data-reveal>
           {featuredImagePath ? (
-            <img src={assetPath(featuredImagePath)} alt={featuredImageAlt} className="h-full min-h-80 w-full bg-white/60 object-contain p-8" />
+            <img src={assetPath(featuredImagePath)} alt={featuredImageAlt} className="max-h-[34rem] w-full rounded-lg object-contain" />
           ) : (
             <div className="grid min-h-80 place-items-center bg-slate-100 text-slate-600">Screenshot can be added later</div>
           )}

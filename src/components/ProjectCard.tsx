@@ -7,17 +7,31 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const imageSrc = project.imagePath ? assetPath(project.imagePath) : '';
+
   return (
     <article className="glass-card flex h-full flex-col overflow-hidden" data-reveal>
-      <div className="aspect-[16/10] border-b border-white/70 bg-slate-100">
+      <div className="aspect-[16/10] border-b border-white/70 bg-gradient-to-br from-slate-100 via-white to-teal-50">
         {project.imagePath ? (
-          <img src={assetPath(project.imagePath)} alt={project.imageAlt ?? `${project.title} screenshot`} className="h-full w-full object-cover" />
+          <a
+            href={imageSrc}
+            target="_blank"
+            rel="noreferrer"
+            className="group grid h-full w-full place-items-center overflow-hidden p-3 focus-visible:outline-offset-[-4px]"
+            aria-label={`Open ${project.title} image`}
+          >
+            <img
+              src={imageSrc}
+              alt={project.imageAlt ?? `${project.title} screenshot`}
+              className="h-full w-full object-contain transition duration-200 group-hover:scale-[1.015]"
+            />
+          </a>
         ) : (
           <div className="grid h-full place-items-center bg-gradient-to-br from-slate-100 via-white to-teal-50 px-6 text-center">
             <div>
               <ImageIcon className="mx-auto text-lagoon" size={36} aria-hidden="true" />
-              <p className="mt-3 text-sm font-semibold text-slate-700">Screenshot placeholder</p>
-              <p className="mt-1 text-xs leading-5 text-slate-500">Add an image path in src/data/projects.ts</p>
+              <p className="mt-3 text-sm font-semibold text-slate-700">Coming soon</p>
+              <p className="mt-1 text-xs leading-5 text-slate-500">Preview will be added once available</p>
             </div>
           </div>
         )}

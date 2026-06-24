@@ -1,4 +1,4 @@
-import { GraduationCap } from 'lucide-react';
+import { BookOpenCheck, CalendarDays, CheckCircle2, Code2, GraduationCap } from 'lucide-react';
 import { education } from '../data/education';
 import { SectionHeading } from './SectionHeading';
 
@@ -8,47 +8,62 @@ export function Education() {
       <SectionHeading
         eyebrow="Education"
         title="College background"
-        description="Current college information is kept concise and easy to update."
+        description="A focused snapshot of my Computer Science foundation and current academic direction."
       />
 
       <div className="mt-10 grid gap-10">
-        {education.map((item) => (
-          <article key={item.school} className="max-w-5xl" data-reveal>
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-lagoon/10 text-lagoon">
-                <GraduationCap size={26} aria-hidden="true" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-2xl font-bold text-slate-950">{item.school}</h3>
-                <p className="mt-2 text-lg font-semibold text-lagoon">{item.degree}</p>
+        {education.map((item) => {
+          const summaryItems = [
+            { label: 'Level', value: item.level, icon: BookOpenCheck },
+            { label: 'Expected Graduation', value: item.expectedGraduation, icon: CalendarDays },
+            { label: 'Focus', value: 'Full-stack systems and algorithms', icon: Code2 },
+          ];
 
-                <dl className="mt-6 grid gap-4 border-y border-slate-200/80 py-5 sm:grid-cols-3">
-                  <div>
-                    <dt className="text-xs font-semibold uppercase text-slate-500">Level</dt>
-                    <dd className="mt-1 text-sm font-bold text-slate-900">{item.level}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs font-semibold uppercase text-slate-500">Expected Graduation</dt>
-                    <dd className="mt-1 text-sm font-bold text-slate-900">{item.expectedGraduation}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs font-semibold uppercase text-slate-500">Focus</dt>
-                    <dd className="mt-1 text-sm font-bold text-slate-900">Full-stack systems and algorithms</dd>
-                  </div>
+          return (
+            <article key={item.school} className="max-w-6xl" data-reveal>
+              <div className="flex flex-col gap-7 lg:flex-row lg:items-start lg:justify-between">
+                <div className="min-w-0 lg:max-w-xl">
+                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-lg bg-lagoon/10 text-lagoon">
+                    <GraduationCap size={30} aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-5 text-3xl font-bold leading-tight text-slate-950">{item.school}</h3>
+                  <p className="mt-3 text-xl font-semibold text-lagoon">{item.degree}</p>
+                </div>
+
+                <dl className="grid flex-1 gap-3 sm:grid-cols-3">
+                  {summaryItems.map((summary) => {
+                    const Icon = summary.icon;
+
+                    return (
+                      <div key={summary.label} className="rounded-lg border border-white/70 bg-white/55 p-4 shadow-glass backdrop-blur-xl">
+                        <Icon className="text-lagoon" size={22} aria-hidden="true" />
+                        <dt className="mt-4 text-sm font-semibold uppercase text-slate-500">{summary.label}</dt>
+                        <dd className="mt-2 text-base font-bold leading-6 text-slate-950">{summary.value}</dd>
+                      </div>
+                    );
+                  })}
                 </dl>
-
-                <ul className="mt-5 grid gap-3 text-sm leading-7 text-slate-700 sm:grid-cols-2">
-                  {item.details.map((detail) => (
-                    <li key={detail} className="grid grid-cols-[0.5rem_1fr] gap-3">
-                      <span className="mt-3 h-1.5 w-1.5 rounded-lg bg-lagoon" aria-hidden="true" />
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          </article>
-        ))}
+
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                {item.details.map((detail) => (
+                  <div key={detail} className="flex gap-3 rounded-lg border border-lagoon/10 bg-white/35 p-4 backdrop-blur">
+                    <CheckCircle2 className="mt-0.5 shrink-0 text-lagoon" size={20} aria-hidden="true" />
+                    <p className="text-base leading-7 text-slate-700">{detail}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {['Software development', 'Algorithms', 'Systems analysis', 'Databases', 'Full-stack projects'].map((focus) => (
+                  <span key={focus} className="rounded-lg border border-slate-200 bg-white/65 px-3 py-2 text-sm font-semibold text-slate-700">
+                    {focus}
+                  </span>
+                ))}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

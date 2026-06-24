@@ -56,22 +56,23 @@ export const projects: Project[] = [
     shortDescription:
       'A responsive portfolio website built to present education, skills, projects, and contact links in a recruiter-friendly format.',
     longDescription:
-      'This portfolio is a static React and Vite website with editable data files, GitHub Pages deployment, responsive navigation, and honest placeholders for future updates such as project screenshots, certifications, and a resume PDF.',
+      'This portfolio is a static React and Vite website with editable data files, GitHub Pages deployment, responsive navigation, and room for future updates such as project screenshots, certifications, and a resume PDF.',
     techStack: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'GitHub Actions', 'GitHub Pages'],
     features: ['One-page responsive layout', 'Editable content files', 'GitHub Pages deployment workflow'],
     status: 'Active portfolio project',
+    imagePath: '/assets/portfolio.png',
+    imageAlt: 'Online portfolio website preview',
     githubLink: 'https://github.com/iyaniyaniyan/portfolio',
     featured: false,
   },
   {
-    title: 'Future Project Placeholder',
-    shortDescription: 'Editable placeholder for a future project that Christian can add when ready.',
+    title: 'Coming Soon Project',
+    shortDescription: 'A reserved space for the next software project once details and screenshots are ready.',
     longDescription:
-      'This card is intentionally marked as a placeholder. Replace the title, description, tech stack, links, screenshot path, and features in src/data/projects.ts when a new project is ready to showcase.',
-    techStack: ['To be updated'],
-    features: ['Add project features here', 'Add repository or demo links when available'],
-    status: 'Placeholder - details to be added',
+      'This project slot is reserved for future academic, thesis-related, or personal software work.',
+    techStack: ['Coming soon'],
+    features: ['Project details will be added when available', 'Repository and demo links will be added when ready'],
+    status: 'Coming soon',
     featured: false,
-    editableNote: 'Replace this placeholder in src/data/projects.ts.',
   },
 ];
