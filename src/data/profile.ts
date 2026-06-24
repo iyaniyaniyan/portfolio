@@ -1,5 +1,7 @@
 import type { Profile } from '../types/portfolio';
 
+const profileImageVersion = '20260624';
+
 export const profile: Profile = {
   name: 'Christian Abiertas Iligan',
   initials: 'CAI',
@@ -7,8 +9,8 @@ export const profile: Profile = {
   subtitle: 'BS Computer Science Student',
   location: 'Cavite State University - Carmona',
   email: 'christianiligan0@gmail.com',
-  avatarPath: '/assets/profile_nobg.png',
-  navAvatarPath: '/assets/profile.jpg',
+  avatarPath: `/assets/profile_nobg.png?v=${profileImageVersion}`,
+  navAvatarPath: `/assets/profile.jpg?v=${profileImageVersion}`,
   resume: {
     label: 'Download Resume',
     path: '/resume.pdf',

@@ -15,19 +15,19 @@ export function Skills() {
           const Icon = group.icon;
 
           return (
-            <article key={group.title} className="glass-card flex flex-col p-5" data-reveal>
-              <div className="flex items-start gap-3">
+            <article key={group.title} className="glass-card flex h-full flex-col p-5" data-reveal>
+              <div className="flex items-start gap-3 md:min-h-[9rem] xl:min-h-[11.5rem]">
                 {Icon ? (
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-lagoon/10 text-lagoon">
                     <Icon size={22} aria-hidden="true" />
                   </span>
                 ) : null}
-                <div>
-                  <h3 className="text-lg font-bold text-slate-950">{group.title}</h3>
+                <div className="min-w-0">
+                  <h3 className="text-lg font-bold leading-7 text-slate-950">{group.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{group.description}</p>
                 </div>
               </div>
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-5 flex flex-wrap content-start gap-2">
                 {group.items.map((item) => (
                   <span key={item} className="rounded-lg border border-slate-200 bg-white/70 px-3 py-2 text-sm font-semibold text-slate-700">
                     {item}
