@@ -10,7 +10,7 @@ export function Hero() {
   const linkedin = socials.find((social) => social.kind === 'linkedin');
 
   return (
-    <section id="home" className="section-shell flex min-h-screen min-w-0 items-center pt-32">
+    <section id="profile" className="section-shell flex min-h-screen min-w-0 items-center pt-32">
       <div className="grid w-full min-w-0 items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="min-w-0" data-reveal>
           <p className="eyebrow">{profile.subtitle}</p>
@@ -63,14 +63,14 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative min-w-0" data-reveal>
+        <div className="relative min-w-0 lg:ml-auto lg:w-full lg:max-w-[32rem]" data-reveal>
           <div className="glass-card overflow-hidden p-4">
             <div className="aspect-[4/5] overflow-hidden rounded-lg bg-slate-950/5">
               {profile.avatarPath && !imageFailed ? (
                 <img
                   src={assetPath(profile.avatarPath)}
-                  alt="Generic developer avatar placeholder for Christian Abiertas Iligan"
-                  className="h-full w-full object-cover"
+                  alt="Portrait of Christian Abiertas Iligan"
+                  className="h-full w-full object-contain object-bottom p-2"
                   onError={() => setImageFailed(true)}
                 />
               ) : (

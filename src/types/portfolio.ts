@@ -26,6 +26,7 @@ export interface Profile {
   location: string;
   email: string;
   avatarPath: string;
+  navAvatarPath: string;
   resume: ResumeConfig;
   intro: string;
   about: string[];

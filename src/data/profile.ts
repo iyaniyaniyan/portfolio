@@ -7,7 +7,8 @@ export const profile: Profile = {
   subtitle: 'BS Computer Science Student',
   location: 'Cavite State University - Carmona',
   email: 'christianiligan0@gmail.com',
-  avatarPath: '/assets/profile-placeholder.png',
+  avatarPath: '/assets/profile_nobg.png',
+  navAvatarPath: '/assets/profile.jpg',
   resume: {
     label: 'Download Resume',
     path: '/resume.pdf',

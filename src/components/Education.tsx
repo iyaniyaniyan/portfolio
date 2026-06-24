@@ -18,22 +18,22 @@ export function Education() {
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-lagoon/10 text-lagoon">
                 <GraduationCap size={26} aria-hidden="true" />
               </span>
-              <div>
+              <div className="min-w-0 flex-1">
                 <h3 className="text-xl font-bold text-slate-950">{item.school}</h3>
                 <p className="mt-2 text-lg font-semibold text-lagoon">{item.degree}</p>
                 <p className="mt-2 text-sm font-semibold text-slate-700">
                   {item.level} | Expected Graduation: {item.expectedGraduation}
                 </p>
+                <ul className="mt-5 space-y-2 text-sm leading-7 text-slate-700">
+                  {item.details.map((detail) => (
+                    <li key={detail} className="grid grid-cols-[0.5rem_1fr] gap-3">
+                      <span className="mt-3 h-1.5 w-1.5 rounded-lg bg-lagoon" aria-hidden="true" />
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <ul className="mt-5 space-y-2 text-sm leading-7 text-slate-700">
-              {item.details.map((detail) => (
-                <li key={detail} className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-lg bg-lagoon" aria-hidden="true" />
-                  <span>{detail}</span>
-                </li>
-              ))}
-            </ul>
           </article>
         ))}
       </div>
