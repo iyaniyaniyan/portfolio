@@ -1,4 +1,4 @@
-import { BookOpenCheck, CalendarDays, CheckCircle2, Code2, GraduationCap } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { education } from '../data/education';
 import { SectionHeading } from './SectionHeading';
 
@@ -14,47 +14,41 @@ export function Education() {
       <div className="mt-10 grid gap-10">
         {education.map((item) => {
           const summaryItems = [
-            { label: 'Level', value: item.level, icon: BookOpenCheck },
-            { label: 'Expected Graduation', value: item.expectedGraduation, icon: CalendarDays },
-            { label: 'Focus', value: 'Full-stack systems and algorithms', icon: Code2 },
+            { label: 'Level', value: item.level },
+            { label: 'Expected Graduation', value: item.expectedGraduation },
+            { label: 'Focus', value: 'Full-stack systems and algorithms' },
           ];
 
           return (
-            <article key={item.school} className="max-w-6xl" data-reveal>
-              <div className="flex flex-col gap-7 lg:flex-row lg:items-start lg:justify-between">
-                <div className="min-w-0 lg:max-w-xl">
-                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-lg bg-lagoon/10 text-lagoon">
-                    <GraduationCap size={30} aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-5 text-3xl font-bold leading-tight text-slate-950">{item.school}</h3>
-                  <p className="mt-3 text-xl font-semibold text-lagoon">{item.degree}</p>
+            <article key={item.school} className="glass-card max-w-6xl p-6 sm:p-8" data-reveal>
+              <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:items-start">
+                <div className="min-w-0">
+                  <h3 className="text-2xl font-bold leading-tight text-slate-950 sm:text-3xl">{item.school}</h3>
+                  <p className="mt-3 text-lg font-semibold text-lagoon sm:text-xl">{item.degree}</p>
                 </div>
 
-                <dl className="grid flex-1 gap-3 sm:grid-cols-3">
-                  {summaryItems.map((summary) => {
-                    const Icon = summary.icon;
-
-                    return (
-                      <div key={summary.label} className="rounded-lg border border-white/70 bg-white/55 p-4 shadow-glass backdrop-blur-xl">
-                        <Icon className="text-lagoon" size={22} aria-hidden="true" />
-                        <dt className="mt-4 text-sm font-semibold uppercase text-slate-500">{summary.label}</dt>
-                        <dd className="mt-2 text-base font-bold leading-6 text-slate-950">{summary.value}</dd>
-                      </div>
-                    );
-                  })}
+                <dl className="grid gap-5 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-slate-200/80 lg:pl-7">
+                  {summaryItems.map((summary) => (
+                    <div key={summary.label} className="min-w-0">
+                      <dt className="text-xs font-semibold uppercase text-slate-500">{summary.label}</dt>
+                      <dd className="mt-1 text-base font-bold leading-6 text-slate-950">{summary.value}</dd>
+                    </div>
+                  ))}
                 </dl>
               </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <div className="mt-7 grid gap-5 border-t border-slate-200/70 pt-6 md:grid-cols-2">
                 {item.details.map((detail) => (
-                  <div key={detail} className="flex gap-3 rounded-lg border border-lagoon/10 bg-white/35 p-4 backdrop-blur">
-                    <CheckCircle2 className="mt-0.5 shrink-0 text-lagoon" size={20} aria-hidden="true" />
+                  <div key={detail} className="flex gap-3">
+                    <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-lagoon/10 text-lagoon">
+                      <CheckCircle2 size={16} aria-hidden="true" />
+                    </span>
                     <p className="text-base leading-7 text-slate-700">{detail}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-6 flex flex-wrap gap-2">
                 {['Software development', 'Algorithms', 'Systems analysis', 'Databases', 'Full-stack projects'].map((focus) => (
                   <span key={focus} className="rounded-lg border border-slate-200 bg-white/65 px-3 py-2 text-sm font-semibold text-slate-700">
                     {focus}
