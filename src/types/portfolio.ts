@@ -1,78 +1,43 @@
-import type { LucideIcon } from 'lucide-react';
-
-export type SocialKind = 'email' | 'github' | 'linkedin' | 'facebook';
-
-export type LinkTarget = '_blank' | '_self';
-
-export interface SocialLink {
-  kind: SocialKind;
-  label: string;
-  handle: string;
-  href: string;
-  target?: LinkTarget;
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  caption: string;
 }
 
-export interface ResumeConfig {
-  label: string;
-  path: string;
-  available: boolean;
+export type ProjectVideo =
+  | { kind: 'youtube'; url: string; title: string }
+  | {
+      kind: 'file';
+      src: string;
+      title: string;
+      poster?: string;
+      captions?: { src: string; language: string; label: string };
+    };
+
+export interface Project {
+  id: string;
+  title: string;
+  category: string;
+  summary: string;
+  stack: string[];
+  images?: ProjectImage[];
+  notes?: { heading: string; text: string }[];
+  links?: { label: string; href: string }[];
+  video?: ProjectVideo;
 }
 
 export interface Profile {
-  name: string;
-  initials: string;
-  title: string;
-  subtitle: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  photo: string;
+  portraitCaption: string;
+  role: string;
   location: string;
-  email: string;
-  avatarPath: string;
-  navAvatarPath: string;
-  resume: ResumeConfig;
   intro: string;
-  about: string[];
-  highlights: string[];
-}
-
-export interface SkillGroup {
-  title: string;
-  description: string;
-  items: string[];
-  icon?: LucideIcon;
-}
-
-export interface ProjectCaseStudy {
-  fullTitle: string;
-  problem: string;
-  solution: string;
-  role: string[];
-  keyFeatures: string[];
-  screenshotNote: string;
-  imagePath?: string;
-  imageAlt?: string;
-}
-
-export interface Project {
-  title: string;
-  shortDescription: string;
-  longDescription: string;
-  techStack: string[];
-  features: string[];
-  status: string;
-  githubLink?: string;
-  liveDemoLink?: string;
-  imagePath?: string;
-  imageAlt?: string;
-  featured: boolean;
-  editableNote?: string;
-  caseStudy?: ProjectCaseStudy;
-}
-
-export interface EducationItem {
-  school: string;
-  degree: string;
-  level: string;
-  expectedGraduation: string;
-  details: string[];
+  about: string;
+  email: string;
+  resumeUrl?: string;
 }
 
 export interface Certification {
@@ -80,10 +45,4 @@ export interface Certification {
   issuer: string;
   date: string;
   credentialUrl?: string;
-  description?: string;
-}
-
-export interface NavItem {
-  label: string;
-  href: string;
 }

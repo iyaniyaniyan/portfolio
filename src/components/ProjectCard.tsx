@@ -1,95 +1,91 @@
-import { ExternalLink, Github, Image as ImageIcon } from 'lucide-react';
-import type { Project } from '../types/portfolio';
-import { assetPath } from '../utils/assets';
+import { useState } from 'react';
+import { ArrowUpRight, Maximize2, Minus, Plus } from 'lucide-react';
+import type { Project, ProjectImage } from '../types/portfolio';
+import { ProjectVideoPlayer } from './ProjectVideoPlayer';
 
-interface ProjectCardProps {
-  project: Project;
+function Screenshot({ image }: { image: ProjectImage }) {
+  return (
+    <figure className="screenshot">
+      <div className="screenshot-mount">
+        <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+      </div>
+      <figcaption>
+        <a
+          href={image.src}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Enlarge screenshot: ${image.caption} (opens in a new tab)`}
+        >
+          <span>{image.caption}</span>
+          <Maximize2 size={14} aria-hidden="true" />
+        </a>
+      </figcaption>
+    </figure>
+  );
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
-  const imageSrc = project.imagePath ? assetPath(project.imagePath) : '';
+export function ProjectCard({ project }: { project: Project }) {
+  const [showNotes, setShowNotes] = useState(false);
+  const [cover, ...gallery] = project.images ?? [];
+  const hasNotes = Boolean(project.notes?.length || gallery.length);
+  const notesId = `${project.id}-notes`;
 
   return (
-    <article className="glass-card flex h-full flex-col overflow-hidden" data-reveal>
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-white/70 bg-gradient-to-br from-slate-100 via-white to-teal-50">
-        {project.imagePath ? (
-          <a
-            href={imageSrc}
-            target="_blank"
-            rel="noreferrer"
-            className="group absolute inset-0 grid place-items-center p-3 focus-visible:outline-offset-[-4px]"
-            aria-label={`Open ${project.title} image`}
-          >
-            <img
-              src={imageSrc}
-              alt={project.imageAlt ?? `${project.title} screenshot`}
-              className="h-full w-full object-contain transition duration-200 group-hover:scale-[1.015]"
-            />
-          </a>
-        ) : (
-          <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-slate-100 via-white to-teal-50 px-6 text-center">
-            <div>
-              <ImageIcon className="mx-auto text-lagoon" size={36} aria-hidden="true" />
-              <p className="mt-3 text-sm font-semibold text-slate-700">Coming soon</p>
-              <p className="mt-1 text-xs leading-5 text-slate-500">Preview will be added once available</p>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex flex-wrap content-start items-start gap-2 md:min-h-[4.25rem]">
-          <span className="rounded-lg bg-lagoon/10 px-3 py-1 text-xs font-bold text-lagoon">{project.status}</span>
-          {project.featured ? <span className="rounded-lg bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">Featured</span> : null}
-        </div>
-
-        <h3 className="mt-4 text-xl font-bold leading-7 text-slate-950 md:min-h-[3.5rem]">{project.title}</h3>
-        <p className="mt-3 text-sm leading-7 text-slate-700 md:min-h-[5.25rem]">{project.shortDescription}</p>
-
-        <div className="mt-4 flex flex-wrap content-start gap-2 md:min-h-[4.5rem]">
-          {project.techStack.map((tech) => (
-            <span key={tech} className="rounded-lg border border-slate-200 bg-white/70 px-2.5 py-1.5 text-xs font-semibold text-slate-700">
-              {tech}
-            </span>
-          ))}
-        </div>
-
-        <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-600 md:min-h-[5rem]">
-          {project.features.slice(0, 3).map((feature) => (
-            <li key={feature} className="flex gap-2">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-lg bg-lagoon" aria-hidden="true" />
-              <span>{feature}</span>
-            </li>
+    <article
+      id={project.id}
+      className={cover ? 'project project-illustrated' : 'project project-text'}
+    >
+      {cover && <Screenshot image={cover} />}
+      <header className="project-heading">
+        <p className="small-label">{project.category}</p>
+        <h3>{project.title}</h3>
+      </header>
+      <div className="project-description">
+        <p>{project.summary}</p>
+        <ul className="stack" aria-label="Technologies">
+          {project.stack.map((item) => (
+            <li key={item}>{item}</li>
           ))}
         </ul>
-
-        {project.editableNote ? <p className="mt-4 text-xs font-semibold text-amber-800">{project.editableNote}</p> : null}
-
-        <div className="mt-auto flex flex-wrap gap-3 pt-6">
-          {project.githubLink ? (
-            <a href={project.githubLink} target="_blank" rel="noreferrer" className="button-secondary">
-              <Github size={17} aria-hidden="true" />
-              GitHub
-            </a>
-          ) : (
-            <span className="button-muted" aria-disabled="true">
-              <Github size={17} aria-hidden="true" />
-              GitHub soon
-            </span>
+        <div className="project-links">
+          {hasNotes && (
+            <button
+              className="inline-link"
+              type="button"
+              aria-expanded={showNotes}
+              aria-controls={notesId}
+              onClick={() => setShowNotes(!showNotes)}
+            >
+              {showNotes ? 'Close project notes' : 'Read project notes'}
+              <span className="sr-only"> for {project.title}</span>
+              {showNotes ? (
+                <Minus size={16} aria-hidden="true" />
+              ) : (
+                <Plus size={16} aria-hidden="true" />
+              )}
+            </button>
           )}
-          {project.liveDemoLink ? (
-            <a href={project.liveDemoLink} target="_blank" rel="noreferrer" className="button-secondary">
-              <ExternalLink size={17} aria-hidden="true" />
-              Live Demo
+          {project.links?.map((link) => (
+            <a className="inline-link" href={link.href} key={link.href}>
+              {link.label} <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-          ) : (
-            <span className="button-muted" aria-disabled="true">
-              <ExternalLink size={17} aria-hidden="true" />
-              Demo soon
-            </span>
-          )}
+          ))}
         </div>
       </div>
+      {hasNotes && (
+        <div className="project-notes" id={notesId} hidden={!showNotes}>
+          {project.notes?.map((note) => (
+            <div key={note.heading}>
+              <h4>{note.heading}</h4>
+              <p>{note.text}</p>
+            </div>
+          ))}
+          {gallery.map((image) => (
+            <Screenshot key={image.src} image={image} />
+          ))}
+        </div>
+      )}
+      {project.video && <ProjectVideoPlayer video={project.video} />}
     </article>
   );
 }

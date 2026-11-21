@@ -1,78 +1,47 @@
+import dashboard from '../assets/kabscholar-dashboard.webp';
 import type { Project } from '../types/portfolio';
 
 export const projects: Project[] = [
   {
-    title: 'KABScholar: Online-Based Scholarship Management System',
-    shortDescription:
-      'A scholarship management system concept for organizing records, applications, disbursements, notifications, and analytics.',
-    longDescription:
-      'KABScholar is a web-based scholarship management system designed to help the Office of Student Affairs and Services of Cavite State University - Carmona manage scholarship records, monitor applications, track allowance disbursements, notify students, and generate reports through data analytics. The system uses K-Means clustering to group scholar data and support data-driven decision-making.',
-    techStack: ['HTML5', 'Tailwind CSS', 'JavaScript', 'PHP', 'Laravel', 'MySQL', 'K-Means clustering'],
-    features: [
-      'Student registration and login',
-      'Scholarship application tracking',
-      'Scholarship program management',
-      'K-Means clustering for scholar grouping',
-      'Reports and analytics',
-      'Allowance disbursement tracking',
+    id: 'kabscholar',
+    title: 'KABScholar',
+    category: 'Undergraduate thesis',
+    summary:
+      'A scholarship workspace for the Office of Student Affairs and Services at CvSU–Carmona. Students follow their applications. Staff review documents, record allowance releases, and prepare reports.',
+    stack: ['Laravel', 'PHP', 'MySQL', 'K-means clustering'],
+    images: [
+      {
+        src: dashboard,
+        alt: 'KABScholar dashboard showing applicant and grantee counts above a breakdown of grant funds and releases.',
+        caption: 'Scholarship office dashboard',
+      },
     ],
-    status: 'Undergraduate thesis project / implementation preparation',
-    imagePath: '/assets/dashboard_admin_kabscholar.png',
-    imageAlt: 'KABScholar admin dashboard interface',
-    featured: true,
-    caseStudy: {
-      fullTitle:
-        'KABScholar: An Online-Based Scholarship Management System Using K-Means Clustering Algorithm for the Office of Student Affairs and Services of Cavite State University - Carmona',
-      imagePath: '/assets/kabscholar_icon.png',
-      imageAlt: 'KABScholar project icon',
-      problem:
-        'Scholarship management can become slow, fragmented, and error-prone when handled manually. Administrators need a centralized system to manage records, track application progress, monitor disbursements, and generate reliable reports.',
-      solution:
-        'KABScholar provides a digital platform for managing student scholarship data, application progress, eligibility screening, notifications, monitoring, and analytics. It supports administrative workflows while improving transparency, organization, and reporting.',
-      keyFeatures: [
-        'Student registration and login',
-        'Student profile management',
-        'Scholarship application tracking',
-        'Scholarship program management',
-        'Eligibility condition management',
-        'Student profiling',
-        'K-Means clustering for scholar grouping',
-        'Reports and analytics',
-        'Allowance disbursement tracking',
-        'Notifications and announcements',
-        'Role-based admin/student access',
-        'Admin user management',
-      ],
-      role: [
-        'Undergraduate thesis proponent / developer.',
-        'Contributed to system planning, design, development, documentation, and implementation preparation.',
-        'Role is described carefully to avoid overstating individual ownership where exact responsibilities may evolve.',
-      ],
-      screenshotNote: 'KABScholar dashboard and icon assets are included in public/assets.',
-    },
+    notes: [
+      {
+        heading: 'My role',
+        text: 'I’m a developer and co-proponent on the thesis team. I contributed to planning the application workflow, implementing the web system, and documenting it for our defense.',
+      },
+      {
+        heading: 'One rule that shaped the design',
+        text: 'Applying for the Tertiary Education Subsidy (TES) and receiving it are separate events. We gave applicants their own export and kept the official Annex 5 workbook for grantee reporting. Staff can prepare both from the system.',
+      },
+      {
+        heading: 'Following the money',
+        text: 'The office imports each approved scholar’s amount. Those amounts establish the batch budget, and recorded releases show how much has been disbursed. Two students in the same batch can receive different amounts.',
+      },
+      {
+        heading: 'Reporting on scholars',
+        text: 'K-means groups scholars by similarities in their profiles. Staff can review those groupings and export an accomplishment report to discuss the patterns they see.',
+      },
+    ],
   },
   {
-    title: 'Online Portfolio Website',
-    shortDescription:
-      'A responsive portfolio website built to present education, skills, projects, and contact links in a recruiter-friendly format.',
-    longDescription:
-      'This portfolio is a static React and Vite website with editable data files, GitHub Pages deployment, responsive navigation, and room for future updates such as project screenshots, certifications, and a resume PDF.',
-    techStack: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'GitHub Actions', 'GitHub Pages'],
-    features: ['One-page responsive layout', 'Editable content files', 'GitHub Pages deployment workflow'],
-    status: 'Active portfolio project',
-    imagePath: '/assets/portfolio.png',
-    imageAlt: 'Online portfolio website preview',
-    githubLink: 'https://github.com/iyaniyaniyan/portfolio',
-    featured: false,
-  },
-  {
-    title: 'Coming Soon Project',
-    shortDescription: 'A reserved space for the next software project once details and screenshots are ready.',
-    longDescription:
-      'This project slot is reserved for future academic, thesis-related, or personal software work.',
-    techStack: ['Coming soon'],
-    features: ['Project details will be added when available', 'Repository and demo links will be added when ready'],
-    status: 'Coming soon',
-    featured: false,
+    id: 'portfolio-site',
+    title: 'This portfolio',
+    category: 'Personal website',
+    summary:
+      'I built this React site to publish my work from one repository. Project notes and screenshots live beside the components, and GitHub Actions publishes each update.',
+    stack: ['React', 'TypeScript', 'Vite', 'GitHub Actions'],
+    links: [{ label: 'View source', href: 'https://github.com/iyaniyaniyan/portfolio' }],
   },
 ];

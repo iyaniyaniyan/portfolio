@@ -1,33 +1,22 @@
 import { About } from './components/About';
-import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
-import { Education } from './components/Education';
-import { FeaturedProject } from './components/FeaturedProject';
-import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import { Navbar } from './components/Navbar';
 import { Projects } from './components/Projects';
-import { Skills } from './components/Skills';
-import { useScrollReveal } from './hooks/useScrollReveal';
 
 export default function App() {
-  useScrollReveal();
-
   return (
-    <div className="page-shell min-h-screen overflow-hidden text-slate-950">
-      <div className="ambient-grid" aria-hidden="true" />
+    <>
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
-        <About />
-        <Skills />
         <Projects />
-        <FeaturedProject />
-        <Education />
-        <Certifications />
-        <Contact />
+        <About />
       </main>
-      <Footer />
-    </div>
+      <Contact />
+    </>
   );
 }
