@@ -2,7 +2,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { profile } from '../data/profile';
 
 export function Navbar() {
-  const initials = (profile.firstName[0] + profile.lastName[0]).toLowerCase();
+  const initials = (profile.firstName[0] + profile.lastName[0]).toUpperCase();
   const displayName = `${profile.firstName} ${profile.lastName}`;
   return (
     <header className="site-header">
@@ -10,14 +10,12 @@ export function Navbar() {
         <a
           className="brand"
           href="#profile"
-          aria-label={`${initials}. ${displayName}, back to introduction`}
+          aria-label={`${initials} ${displayName}, back to introduction`}
         >
           <span className="monogram" aria-hidden="true">
-            {initials}.
-          </span>
-          <span className="wordmark">
-            {displayName}
-          </span>
+            {initials}
+          </span>{' '}
+          <span className="wordmark">{displayName}</span>
         </a>
         <nav aria-label="Main navigation">
           <a href="#projects">Work</a>

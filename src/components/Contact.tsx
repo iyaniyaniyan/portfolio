@@ -7,8 +7,8 @@ export function Contact() {
     <footer id="contact" className="contact">
       <div className="wrap">
         <div className="contact-main">
-          <div>
-            <h2 className="small-label">Contact</h2>
+          <div className="contact-copy">
+            <h2 className="section-title">Contact</h2>
             <p>For internships, collaborations, or questions about my work.</p>
             <a className="contact-email" href={`mailto:${profile.email}`}>
               {profile.email} <ArrowUpRight aria-hidden="true" />

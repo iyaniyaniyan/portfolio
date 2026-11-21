@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, GraduationCap } from 'lucide-react';
 import { certifications } from '../data/certifications';
 import { education } from '../data/education';
 import { profile } from '../data/profile';
@@ -13,12 +13,17 @@ export function About() {
         </h2>
         <p className="about-text">{profile.about}</p>
         <div id="education" className="education">
-          <h3 className="small-label">Education</h3>
-          <p>{education.degree}</p>
-          <p>{education.school}</p>
-          <p>
-            {education.yearLevel} · Expected graduation {education.expectedGraduation}
-          </p>
+          <span className="education-icon">
+            <GraduationCap size={21} aria-hidden="true" />
+          </span>
+          <div>
+            <h3 className="small-label">Education</h3>
+            <p>{education.degree}</p>
+            <p>{education.school}</p>
+            <p>
+              {education.yearLevel} · Expected graduation {education.expectedGraduation}
+            </p>
+          </div>
         </div>
       </div>
       <div id="skills" className="skills">

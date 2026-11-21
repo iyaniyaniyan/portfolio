@@ -35,11 +35,11 @@ export function ProjectCard({ project }: { project: Project }) {
       id={project.id}
       className={cover ? 'project project-illustrated' : 'project project-text'}
     >
-      {cover && <Screenshot image={cover} />}
       <header className="project-heading">
         <p className="small-label">{project.category}</p>
         <h3>{project.title}</h3>
       </header>
+      {cover && <Screenshot image={cover} />}
       <div className="project-description">
         <p>{project.summary}</p>
         <ul className="stack" aria-label="Technologies">
@@ -50,7 +50,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div className="project-links">
           {hasNotes && (
             <button
-              className="inline-link"
+              className="secondary-link"
               type="button"
               aria-expanded={showNotes}
               aria-controls={notesId}

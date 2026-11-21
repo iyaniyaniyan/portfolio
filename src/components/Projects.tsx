@@ -5,7 +5,7 @@ export function Projects() {
   return (
     <section id="projects" className="work" aria-labelledby="work-title">
       <div className="wrap">
-        <h2 id="work-title" className="section-title">
+        <h2 id="work-title" className="section-title work-title">
           Selected work
         </h2>
         <div id="featured-project">
